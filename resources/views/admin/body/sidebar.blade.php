@@ -28,11 +28,22 @@
                         <span>Home</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('home.slider') }}">Hoe slider  Setup</a></li>
+                        <li><a href="{{ route('home.slider') }}">Home slider  Setup</a></li>
                     </ul>
                 </li>
 
+
                 <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>About</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('about.setup') }}">About  Setup</a></li>
+                    </ul>
+                </li>
+
+                {{-- <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-layout-3-line"></i>
                         <span>Layouts</span>
@@ -61,7 +72,7 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
                 <li class="menu-title">Pages</li>
 

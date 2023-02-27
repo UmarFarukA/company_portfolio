@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Home\HomeSliderController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Home\AboutController;
+use App\Http\Controllers\Home\HomeSliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,10 +45,16 @@ Route::controller(AdminController::class)->group(function () {
 
 // Home Slide Routes
 Route::controller(HomeSliderController::class)->group(function () {
-    Route::get('/admin/home', 'homeSlider')->name('home.slider');
-    Route::post('/admin/homeslider_update', 'updateHomeSlide')->name('admin_home_slider');
+    Route::get('/home/setup', 'homeSlider')->name('home.slider');
+    Route::post('/home/update', 'updateHomeSlide')->name('admin_home_slider');
 });
 
+
+//About All routes
+Route::controller(AboutController::class)->group(function () {
+    Route::get('/about/setup', 'AboutSetup')->name('about.setup');
+    Route::post('/about/update', 'upadateAbout')->name('update_about_page');
+});
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
