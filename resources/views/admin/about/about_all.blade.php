@@ -12,11 +12,11 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="{{ route('update_about_page') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('about.update') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <div>
-                                    <input type="hidden" id=1, name="id" value="{{ $homeData->id }}">
+                                    <input type="hidden" id=1, name="id" value="{{ $aboutpage->id }}">
                                 </div>
                                 {{-- Title Field --}}
                                 <div class="row mb-3">
@@ -24,7 +24,10 @@
                                     <div class="col-sm-10 ">
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                                            <input type="text" class="form-control" id="title" name="title" value="{{ $homeData->title }}">
+                                            <input type="text" class="form-control" id="title" name="title" value="{{ $aboutpage->title }}">
+                                        @error('title')
+                                            <span class="text-red-400">{{ $message }}</span>
+                                        @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -36,29 +39,42 @@
                                     <div class="col-sm-10 ">
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                                            <input type="text" class="form-control" id="short_title" name="short_title" value="{{ $homeData->short_title }}">
+                                            <input type="text" class="form-control" id="short_title" name="short_title" value="{{ $aboutpage->short_title }}">
                                         </div>
                                     </div>
                                 </div>
                                 {{-- End uShort Title field --}}
 
-                                {{--Vedio URL Field --}}
+                                {{-- Short description Field --}}
                                 <div class="row mb-3">
-                                    <label for="vedio_url" class="col-sm-2">Vedio URL</label>
+                                    <label for="short_description" class="col-sm-2">Short Description</label>
                                     <div class="col-sm-10 ">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="vedio_url" name="vedio_url">
+                                            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                                            <input type="text" class="form-control" id="short_description" name="short_description" value="{{ $aboutpage->short_description }}">
                                         </div>
-                                    </div>  
+                                    </div>
                                 </div>
-                                {{-- End Vedio URL field --}}
+                                {{-- End uShort description field --}}
+
+                                {{-- Long description Field --}}
+                                <div class="row mb-3">
+                                    <label for="long_description" class="col-sm-2">Long Description</label>
+                                    <div class="col-sm-10 ">
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                                            <input type="text" class="form-control" id="long_description" name="long_description" value="{{ $aboutpage->long_description }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- End uLong description field --}}
 
                                 {{-- Home slider image Field --}}
                                 <div class="row mb-3">
-                                    <label for="home_img" class="col-sm-2">Home Image</label>
+                                    <label for="about_img" class="col-sm-2">About Image</label>
                                     <div class="col-sm-10 ">
                                         <div class="input-group">
-                                            <input type="file" class="form-control" id="home_img" name="home_img">
+                                            <input type="file" class="form-control" id="about_img" name="about_img">
                                         </div>
                                     </div>
                                 </div>
@@ -67,13 +83,13 @@
                                 <div class="row mb-3">
                                     <label for="displayImg" class="col-sm-2"></label>
                                     <div class="col-sm-10 ">
-                                        <img id="showImage" src="{{(!empty($homeData->home_img) ? url('/uploads/home_images/'.$homeData->home_img) : url('/uploads/no_image.png')) }} " class="rounded avatar-lg"  alt="Home Image">
+                                        <img id="showImage" src="{{(!empty($aboutpage->about_img) ? url('/uploads/home_images/'.$aboutpage->home_img) : url('/uploads/no_image.png')) }} " class="rounded avatar-lg"  alt="Home Image">
                                     </div>
                                 </div>
                                 {{-- End field --}}
 
                                 <div class="row mb-3">
-                                    <input type="submit" value="Update Home Slide" class="col-sm-2 btn btn-info waves-light">
+                                    <input type="submit" value="Update About Page" class="col-sm-2 btn btn-info waves-light">
                                     <div class="col-sm-10 "></div>
                                     
                                 </div>
@@ -87,7 +103,7 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#home_img').change(function(e) {
+            $('#about_img').change(function(e) {
                 let reader = new FileReader();
                 reader.onload = function(e) {
                     $('#showImage').attr('src', e.target.result);

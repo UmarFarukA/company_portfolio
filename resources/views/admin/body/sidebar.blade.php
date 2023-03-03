@@ -40,8 +40,11 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('about.setup') }}">About  Setup</a></li>
+                        <li><a href="{{ route('about.multi_image') }}">Upload Muti Image</a></li>
+                        <li><a href="{{ route('about.view_images') }}">View Uploaded Images</a></li>
                     </ul>
                 </li>
+                
 
                 {{-- <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

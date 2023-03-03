@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('frontend.fr_index');
 });
 
+Route::get('/about', function () {
+    return view('frontend.main_about');
+})->name('main.about');
+
 Route::get('/login', function () {
     return view('login')->name('login');
 });
@@ -53,7 +57,13 @@ Route::controller(HomeSliderController::class)->group(function () {
 //About All routes
 Route::controller(AboutController::class)->group(function () {
     Route::get('/about/setup', 'AboutSetup')->name('about.setup');
-    Route::post('/about/update', 'upadateAbout')->name('update_about_page');
+    Route::post('/about/update', 'updateAbout')->name('about.update');
+    Route::get('/about/multi_upload', 'uploadMultiImage')->name('about.multi_image');
+    Route::post('/about/storeMultiImage', 'storeMultipleImages')->name('upload.multipleImages');
+    Route::get('/about/view_images', 'viewUploadedImages')->name('about.view_images');
+    Route::get('/about/edit_images/{id}', 'editMultiImage')->name('edit.multi_image');
+    Route::post('/about/update_image', 'updateImage')->name('update.edit_image');
+    Route::get('/about/delete_image/{id}', 'deleteImage')->name('delete.multi.image');
 });
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
