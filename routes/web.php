@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Home\PortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,17 @@ Route::controller(AboutController::class)->group(function () {
     Route::get('/about/edit_images/{id}', 'editMultiImage')->name('edit.multi_image');
     Route::post('/about/update_image', 'updateImage')->name('update.edit_image');
     Route::get('/about/delete_image/{id}', 'deleteImage')->name('delete.multi.image');
+});
+
+
+// Portfolio All routes
+Route::controller(PortfolioController::class)->group(function () {
+    Route::get('/portfolio/all', 'viewUploadedPortfolio')->name('all.portfolio');
+    Route::get('/portfolio/setup', 'PortfolioSetup')->name('add.portfolio');
+    Route::post('/portfolio/store', 'StorePortfolio')->name('store.portfolio');
+    Route::get('/portfolio/edit/{id}', 'EditPortfolio')->name('edit.portfolio');
+    Route::post('/portfolio/update', 'UpdatePorfolio')->name('update.portfolio');
+    Route::get('/portfolio/delete/{id}', 'DeletePortfolio')->name('delete.portfolio');
 });
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
